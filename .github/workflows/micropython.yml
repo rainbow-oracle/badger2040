@@ -2,9 +2,6 @@ name: MicroPython Firmware
 
 on:
   push:
-  pull_request:
-  release:
-    types: [created]
 
 env:
   MICROPYTHON_VERSION: v1.23.0
@@ -13,7 +10,7 @@ env:
 
 jobs:
   deps:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     name: Dependencies
     steps:
     - name: Workspace Cache
@@ -57,7 +54,7 @@ jobs:
   build:
     needs: deps
     name: Build ${{matrix.name}}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         include:
